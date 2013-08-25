@@ -2,7 +2,9 @@
 //  OpenShift sample Node application
 var express = require('express');
 var fs      = require('fs');
-
+var mongoose = require('mongoose'),
+    listings = require('./routes/listings'),
+    path=require('path');
 
 /**
  *  Define the sample application.
@@ -44,6 +46,7 @@ var SampleApp = function() {
 
         //  Local cache for static content.
         self.zcache['index.html'] = fs.readFileSync('./index.html');
+        self.zcache['public/mapcheck.html'] = fs.readFileSync('./public/mapcheck.html');
     };
 
 
@@ -107,8 +110,9 @@ var SampleApp = function() {
 
         self.routes['/'] = function(req, res) {
             res.setHeader('Content-Type', 'text/html');
-            res.send(self.cache_get('index.html') );
+            res.send(self.cache_get('public/mapcheck.html') );
         };
+
     };
 
 
@@ -119,11 +123,21 @@ var SampleApp = function() {
     self.initializeServer = function() {
         self.createRoutes();
         self.app = express.createServer();
+        
+        self.app.use(express.bodyParser());
+        self.app.use(express.methodOverride());
+        self.app.use(express.static(path.join(__dirname, 'public')));
+
+        var mongourl = "mongodb://ranger9007:poker101@ds027668.mongolab.com:27668/maps";
+        process.env.mongourl = mongourl;
+        mongoose.connect(mongourl);
 
         //  Add handlers for the app (from the routes).
         for (var r in self.routes) {
             self.app.get(r, self.routes[r]);
         }
+
+        self.app.get('/listings/all',listings.getAll);
     };
 
 

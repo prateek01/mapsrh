@@ -128,6 +128,7 @@ var SampleApp = function() {
         self.app.use(express.methodOverride());
         self.app.use(express.static(path.join(__dirname, 'public')));
 
+
         var mongourl = "mongodb://ranger9007:poker101@ds027668.mongolab.com:27668/maps";
         process.env.mongourl = mongourl;
         mongoose.connect(mongourl);
@@ -138,6 +139,10 @@ var SampleApp = function() {
         }
 
         self.app.get('/listings/all',listings.getAll);
+        self.app.get('/listings/delete', listings.deleteAllListings);
+        self.app.post('/listings/upload', listings.uploadListings);
+        self.app.get('/listings/poly', listings.polylistings);
+        self.app.get('/listings/logs', listings.logs);
     };
 
 

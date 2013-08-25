@@ -9,6 +9,7 @@ var field = new Array();
 
 
 function getListings() {
+	// get listings for visible
 	if(previousZoom >= map.getZoom()) {
 		console.log(map.getBounds().toString());
 		$.getJSON("listings/poly?curr="+map.getBounds().toUrlValue()+"&prev="+previousBoundsStr+"&zoom="+map.getZoom(),function(result){

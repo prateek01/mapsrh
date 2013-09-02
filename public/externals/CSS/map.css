@@ -25,3 +25,12 @@ height: 100%;
 	background-color:#F2F2F2;
 	box-shadow: 10px 10px 5px #888888;
 }
+
+@font-face {
+  font-family: 'Graublau Web';
+  src: url('GraublauWeb.eot');
+  src: local('?'),
+    url("GraublauWeb.woff") format("woff"),
+    url("GraublauWeb.otf") format("opentype"),
+    url("GraublauWeb.svg#grablau") format("svg");
+}

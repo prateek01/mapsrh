@@ -15,7 +15,7 @@ function getListings() {
 		$.getJSON("listings/poly?curr="+map.getBounds().toUrlValue()+"&prev="+previousBoundsStr+"&zoom="+map.getZoom(),function(result){
 			previousZoom = map.getZoom();
 			$.each(result,function(i,temp)
-		{
+			{
 			field[i] = temp;
 			marker[i] = new google.maps.Marker({position: new google.maps.LatLng(field[i].l.coordinates[1], field[i].l.coordinates[0]),map: map,title: 'Click me'});
 			content[i] = field[i].title + " cost is" + field[i].price;
@@ -26,7 +26,11 @@ function getListings() {
 		});
 	}
 
+
+// slider functionality
+
 $(function() {
+		
     $( "#slider-range" ).slider({range: true,min: 0,max: 15000,values: [ 0,15000 ],slide: function( event, ui ) 
     	{
         	$( "#amount" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1] );

@@ -67,3 +67,4 @@ function Onload()
 	google.maps.event.addListener(map, 'idle', getListings);
 }
 
+

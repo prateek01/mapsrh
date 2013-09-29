@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 lib-cov
 *.seed
 *.log
@@ -12,3 +13,10 @@ logs
 results
 
 npm-debug.log
+=======
+target
+.settings/*
+!.settings/.jsdtscope
+.project
+.classpath
+>>>>>>> fd2ba3a05f19e0d47a87c5029c607d6945262b65

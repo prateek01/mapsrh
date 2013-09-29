@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<link rel="stylesheet" type="text/css" href="externals/CSS/map.css" />
+	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB1bHKtLNzgOe5GikNXZyEL8I4cq7xpXDI&sensor=false" </script>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+	<script src="externals/JS/jquery.js"></script>
+	<script src="externals/JS/Onload.js"></script>
+	<script src="externals/JS/Minimize.js"></script>
+	<script src="externals/JS/geoLocation.js"></script>
+	<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+	<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script> 
+	<script LANGUAGE="JavaScript"> </script>
+</head>
+
+<body>
+
+	<div id="map" style="position:relative; z-index:3;" class="map"></div>
+	<div id ="PopUpSearch" style="position:absolute; bottom:60px;width:410px;border:1px solid #CCC; z-index:4" class="shadow">
+		<div style = "float:right;"> <img id="MaxMin" onclick="Minimize()" title ="Minimize" src="externals/img/minimize2.png" href="#"/></div>
+			<div style ="float:left; margin-right:10px;">
+				<img src = "externals/img/taalash.png">
+			</div>
+			<div style ="padding:5px;">
+				<span style="color: #284a6e; font-weight:bold; font-size:16pt;"> Taalash </span>
+				<br>
+				<span style="color:#284a6e;font-size:9pt;">
+				"Your search ends here"
+				</span>
+			</div>
+			<label for="amount">Price range:</label>
+			<input type="text" id="amount" style="border: 0; color: #f6931f; font-weight: bold;" />
+			<div id = "slider-range"></div>
+			<form Name="myform" action = "" method="GET" onSumbit="return false">
+				Location: <input class="location" id="location" type="text" name="location" value=""><br>
+				<input type="submit" value="Submit" onClick="geoLocation()">
+			</form>
+	</div>
+
+<script>
+window.onload=Onload;
+$('form').submit(function(e){e.preventDefault()})
+</script>
+
+</body>
+</html>

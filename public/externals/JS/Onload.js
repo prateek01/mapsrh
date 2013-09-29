@@ -12,7 +12,7 @@ function getListings() {
 	// get listings for visible
 	if(previousZoom >= map.getZoom()) {
 		console.log(map.getBounds().toString());
-		$.getJSON("listings/poly?curr="+map.getBounds().toUrlValue()+"&prev="+previousBoundsStr+"&zoom="+map.getZoom(),function(result){
+		$.getJSON("http://new-findall.rhcloud.com/listings/poly?curr="+map.getBounds().toUrlValue()+"&prev="+previousBoundsStr+"&zoom="+map.getZoom(),function(result){
 			previousZoom = map.getZoom();
 			$.each(result,function(i,temp)
 			{

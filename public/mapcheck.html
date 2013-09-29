@@ -7,8 +7,10 @@
 	<script src="externals/JS/jquery.js"></script>
 	<script src="externals/JS/Onload.js"></script>
 	<script src="externals/JS/Minimize.js"></script>
+	<script src="externals/JS/geoLocation.js"></script>
 	<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
-	<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+	<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script> 
+	<script LANGUAGE="JavaScript"> </script>
 </head>
 
 <body>
@@ -26,13 +28,18 @@
 				"Your search ends here"
 				</span>
 			</div>
-				<label for="amount">Price range:</label>
-				<input type="text" id="amount" style="border: 0; color: #f6931f; font-weight: bold;" />
-				<div id = "slider-range"></div>
+			<label for="amount">Price range:</label>
+			<input type="text" id="amount" style="border: 0; color: #f6931f; font-weight: bold;" />
+			<div id = "slider-range"></div>
+			<form Name="myform" action = "" method="GET" onSumbit="return false">
+				Location: <input class="location" id="location" type="text" name="location" value=""><br>
+				<input type="submit" value="Submit" onClick="geoLocation()">
+			</form>
 	</div>
 
 <script>
 window.onload=Onload;
+$('form').submit(function(e){e.preventDefault()})
 </script>
 
 </body>

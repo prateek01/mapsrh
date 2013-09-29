@@ -1,10 +1,13 @@
 #!/bin/env node
 //  OpenShift sample Node application
+
+var mime = require('mime');
 var express = require('express');
 var fs      = require('fs');
 var mongoose = require('mongoose'),
     listings = require('./routes/listings'),
     path=require('path');
+
 
 /**
  *  Define the sample application.
@@ -96,7 +99,7 @@ var SampleApp = function() {
      *  Create the routing table entries + handlers for the application.
      */
     self.createRoutes = function() {
-        self.routes = { };
+       self.routes = { };
 
         // Routes for /health, /asciimo and /
         self.routes['/health'] = function(req, res) {

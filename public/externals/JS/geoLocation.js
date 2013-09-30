@@ -14,7 +14,7 @@ function geoLocation()
 		      				  };
 
           		var map = new google.maps.Map(document.getElementById('map'), options);
-              console.log(map.getBounds().toString());
+              console.log(map.getBounds().toString(),'   getListings=',getListings);
               google.maps.event.addListener(map, 'idle', getListings);
           }
           else 

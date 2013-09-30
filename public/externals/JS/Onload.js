@@ -16,12 +16,16 @@ function getListings() {
 			previousZoom = map.getZoom();
 			$.each(result,function(i,temp)
 			{
-			field[i] = temp;
-			marker[i] = new google.maps.Marker({position: new google.maps.LatLng(field[i].l.coordinates[1], field[i].l.coordinates[0]),map: map,title: 'Click me'});
-			content[i] = field[i].title + " cost is" + field[i].price;
-			google.maps.event.addListener(marker[i], 'click', function() {	
-				marker[i].setIcon("externals/img/minimize2.png");
-				infowindow.setContent(content[i]); infowindow.open(map, marker[i]);});
+				if(field[i]) {
+					removeListener(field[i]);
+					field[i]=null;
+				}
+				field[i] = temp;
+				marker[i] = new google.maps.Marker({position: new google.maps.LatLng(field[i].l.coordinates[1], field[i].l.coordinates[0]),map: map,title: 'Click me'});
+				content[i] = field[i].title + " cost is" + field[i].price;
+				google.maps.event.addListener(marker[i], 'click', function() {	
+					marker[i].setIcon("externals/img/minimize2.png");
+					infowindow.setContent(content[i]); infowindow.open(map, marker[i]);});
 		});
 		});
 	}

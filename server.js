@@ -141,6 +141,12 @@ var SampleApp = function() {
             self.app.get(r, self.routes[r]);
         }
 
+        self.app.get('/*', function(req, res, next) {
+          res.header("Access-Control-Allow-Origin", "*");
+          res.header("Access-Control-Allow-Headers", "X-Requested-With");
+          next();
+        });
+
         self.app.get('/listings/all',listings.getAll);
         self.app.get('/listings/delete', listings.deleteAllListings);
         self.app.post('/listings/upload', listings.uploadListings);
